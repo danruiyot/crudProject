@@ -10,15 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>'auth'],function ()
+{
+    Route::get('/', function () {
+	    return view('home');
+    });
+    Route::get('/home', function () {
+        return view('home');
+    });
 });
-
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('employees','EmployeesController');
 
+/* this route for Company */ 
 Route::resource('companies', 'CompaniesController');
+
+/* this route for Employee */ 
+Route::resource('employees', 'EmployeesController');
 

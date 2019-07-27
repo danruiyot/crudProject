@@ -28,7 +28,6 @@
 <td>{{$employees->email}}</td>
 <td>
 <form class="" action="{{route('employees.destroy', $employees->id)}}" method="post">
-<a class="btn btn-success" href="{{route('employees.show', $employees->id)}}">show</a>
 <a class="btn btn-warning" href="{{route('employees.edit', $employees->id)}}">edit</a>
 @csrf
 @method('DELETE')

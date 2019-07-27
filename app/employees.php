@@ -35,12 +35,16 @@ class employees extends Model
      *
      * @var array
      */
-    protected $fillable = array('fname', 'lname',  'email');
+    protected $fillable = array('fname', 'lname',  'email','company_id');
     
     /**
      * The attributes that aren't mass assignable
      *
      * @var array
      */
+    public function companies()
+    {
+    	return $this->belongsTo(companies::class,'company_id');
+    }
     protected $guarded = array();
 }

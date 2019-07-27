@@ -32,7 +32,15 @@
 	<strong>Email</strong>
 	<input type="text" name="email" class="form-control" placeholder="Email">
 	</div>
-		
+
+		<div class="form-group">
+<strong>Company :</strong>
+  	 <div class="">					 <select name="company_id" class="form-control">
+   @foreach ($companies as $companies)		         <option value="{{$companies->id}}">{{$companies->name}}</option>
+   @endforeach
+  </select>
+ </div>
+  </div>
 
 
 	<div>

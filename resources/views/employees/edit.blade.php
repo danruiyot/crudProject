@@ -31,8 +31,24 @@
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" class="form-control" name="email" value={{ $employees->email }} />
-            </div>
+	    </div>
 
+ <div class="form-group">
+<label for="company_id" class="">Company Name:</label>
+ <div >
+ <select name="company_id" class="form-control">
+ <option value="{{$employees->companies->id}}">{{$employees->companies->name}}</option>
+  @foreach ($companies as $companies)
+  @if ($employees->companies->id === $companies->id)  
+  @else
+	  <option value="{{$companies->id}}">{{$companies->name}}</option>
+  @endif
+ @endforeach
+  </select>
+  </div>
+ </div>
+
+<br>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

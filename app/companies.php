@@ -35,7 +35,7 @@ class companies extends Model
      *
      * @var array
      */
-    protected $fillable = array('name', 'email',  'website','mime','filename','original_filename');
+    protected $fillable = array('name', 'email',  'website','image');
     
     /**
      * The attributes that aren't mass assignable

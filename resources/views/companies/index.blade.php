@@ -4,7 +4,7 @@
 <div class="container">
 <div>
 <div>
-<h3>Employees</h3>
+<h3>Company</h3>
 </div>
 <div>
 <a class="btn btn-success" href="{{route('companies.create')}}">Add new Company</a>
@@ -26,13 +26,13 @@
 @foreach ($companies as $companies)
 <tr>
 <td>
-<img class="thumbnail" src="{{ url('storage/'.$companies->image) }}" alt="" title="" >
+<img class="img-thumbnail" src="{{ asset('storage/'.$companies->image) }}" alt="" title="" >
 </td>
 <td>{{$companies->name}}</td>
 <td>{{$companies->email}}</td>
 <td>{{$companies->website}}</td>
 <td>
-<form class="" action="{{route('companies.destroy', $companies->id)}}" method="post">
+<form action="{{route('companies.destroy', $companies->id)}}" method="post">
 
 <a class="btn btn-warning" href="{{route('companies.edit', $companies->id)}}">edit</a>
 @csrf

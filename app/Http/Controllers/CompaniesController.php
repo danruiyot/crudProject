@@ -48,24 +48,22 @@ return view('companies.index', compact('companies'));
      */
     public function store(Request $request)
     {
-       //  $request->validate([
-	 //   'name' => 'required',
-//    'email' => 'required',
-//		    'website' => 'required'
-//	    ]);
-	    // companies::create($request ->all());
-	    $formInput=$request->except('image');
+
+        $formInput=$request->except('image');
 
         $image=$request->image;
-
+       // dd($image);
         if($image)
         {
-           $formInput['image']=Storage::disk('local')->put('public', $image);
-	}
-	companies::create($formInput);
+          $formInput['image']=Storage::disk('local')->put('public', $image);
+        }
+
+        companies::create($formInput);
+
+
 
 	    return redirect()->route('companies.index')
-		    ->with('success','new employee added successfully');
+		    ->with('success','new company added successfully');
     }
 
     /**
@@ -110,24 +108,15 @@ return view('companies.index', compact('companies'));
 	 
 
 	  $companies = companies::find($id);
-
-        $image=$request->image;
-    if($image){
-       // $file = request()->file('image');
-      // dd($image);
-       Storage::delete($companies->image);
-       $companies->image = Storage::disk('local')->put('public', $image);
-
-
-    }
     $companies->name = $request->name;
     $companies->email = $request->email;
     $companies->website = $request->website;
 
-
-
-$companies->save();
-return redirect()->route('companies.index')                                                                         ->with('success','employe edited');
+    $companies->save();
+    $companies -> update([
+'image' => request()->image->store('uploads', 'public'),
+]);
+return redirect()->route('companies.index')                                                                         ->with('success','company edited');
 
     }
 

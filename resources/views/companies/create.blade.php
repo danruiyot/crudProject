@@ -35,7 +35,7 @@
 
     <div class="form-group">
 	<label for="logo">Logo:</label>
-        <input type="file" class="form-control" name="image"/>
+        <input type="file" class="form-control" name="image">
     </div>
 	<br>
 	<div >

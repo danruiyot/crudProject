@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\employees;
+use App\companies;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeesRequest;
 
 class EmployeesController extends Controller
 {
@@ -25,7 +28,9 @@ return view('employees.index', compact('employees'));
      */
     public function create()
     {
-        return view('employees.create');
+	    $companies = companies::all();
+        return  view('employees.create',compact('companies'));
+
     }
 
     /**
@@ -65,8 +70,12 @@ return view('employees.index', compact('employees'));
      */
     public function edit($id)
     {
-	    $employees = employees::find($id);
-	    return view('employees.edit', compact('employees'));
+	$employees = employees::findOrFail($id);
+        $companies = companies::all();
+        // return to the edit views
+        return view('employees.edit',compact('employees','companies'));
+
+
 
     }
 
