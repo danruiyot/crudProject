@@ -13,6 +13,7 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
 	    $table->text('name');
@@ -38,7 +39,10 @@ class CreateCompaniesTable extends Migration
 	    Schema::alter('employees', function (Blueprint $table) {
 		    $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 	    });
-        Schema::dropIfExists('companies');
+	    Schema::disableForeignKeyConstraints();
+	    Schema::dropIfExists('companies');
+	    Schema::enableForeignKeyConstraints();
+
     }
 }
 
