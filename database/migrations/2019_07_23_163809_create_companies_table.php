@@ -30,7 +30,11 @@ class CreateCompaniesTable extends Migration
      * @return void
      */
     public function down()
+    
     {
+	    Schema::alter('employees', function (Blueprint $table) {
+		    $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+	    });
         Schema::dropIfExists('companies');
     }
 }
