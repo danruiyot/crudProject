@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
 	    $table->integer('company_id')->unsigned();
 	    $table->timestamp('created_at');
 	    $table->timestamp('updated_at');
+	    $table->foreign('company_id')->references('id')->on('companies');
 
         });
     }

@@ -23,9 +23,7 @@ class CreateCompaniesTable extends Migration
 	    $table->timestamp('created_at');
 	    $table->timestamp('updated_at');
 	});
-	Schema::alter('employees', function (Blueprint $table) {
-	$table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-	});
+
     }
 
     /**
@@ -36,9 +34,6 @@ class CreateCompaniesTable extends Migration
     public function down()
     
     {
-	    Schema::alter('employees', function (Blueprint $table) {
-		    $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-	    });
 	    Schema::disableForeignKeyConstraints();
 	    Schema::dropIfExists('companies');
 	    Schema::enableForeignKeyConstraints();
