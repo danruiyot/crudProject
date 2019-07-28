@@ -21,7 +21,10 @@ class CreateCompaniesTable extends Migration
 	    $table->string('image')->nullable();
 	    $table->timestamp('created_at');
 	    $table->timestamp('updated_at');
-        });
+	});
+	Schema::alter('employees', function (Blueprint $table) {
+	$table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+	});
     }
 
     /**
