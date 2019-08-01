@@ -14,10 +14,24 @@
                         </div>
                     @endif
 
-                    You are logged in!
+		    Welcome to the Employee management sytem.
+
                 </div>
-            </div>
+	    </div>
+<div  class="container-fluid">
+  <h1>Employees </h1>
+  <p>
+This is the section where you will be able to add, edit and delete employees
+</p>
+</div>
+<div  class="container-fluid">
+  <h1>Companies </h1>
+  <p>
+This is the section where you will be able to add, edit and delete various Companies
+</p>
+</div>
         </div>
     </div>
 </div>
+
 @endsection
